@@ -1,27 +1,14 @@
 name: CI
-
-on: [ push, pull_request ]
-
+on: [ push ]
 jobs:
   build:
-
+    name: Test
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: Prepare
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: install
-
-      - name: Build
+          cmd: install # will run `yarn install` command
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: build
-#
-#      - name: Deploy
-#      - uses: peaceiris/actions-gh-pages@v3
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./dist
+          cmd: build # will run `yarn build` command
